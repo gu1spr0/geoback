@@ -1,0 +1,83 @@
+import { Departamento } from './../../models/departamento.entity';
+import { Evento } from './../../models/evento.entity';
+import { Vehiculo } from './../../models/vehiculo.entity';
+import { Persona } from './../../models/persona.entity';
+import { Conductor } from './../../models/conductor.entity';
+import { Injectable, Inject } from '@nestjs/common';
+
+@Injectable()
+export class ConductorService {
+    constructor(@Inject('CONDUCTOR_REPOSITORY') private readonly conductorRepository: typeof Conductor) {}
+
+    // Lista todos /messages
+    async indexAll(): Promise<Conductor[]> {
+        return await this.conductorRepository.findAll<Conductor>({
+            include: [
+                { model: Persona, include: [{model: Departamento, attributes: ['departamento', 'sigla']}], attributes: [
+                    'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email', 'valido']},
+                { model: Evento, attributes: ['evento', 'fecha', 'hora']},
+                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido']},
+            ],
+            attributes: ['categoria'],
+        });
+    }
+    async index(): Promise<Conductor[]> {
+        return await this.conductorRepository.findAll<Conductor>({
+            include: [
+                { model: Persona, include: [{model: Departamento, attributes: ['departamento', 'sigla']}], attributes: [
+                    'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email', 'valido'], where: {
+                        valido: 'AC',
+                    }},
+                { model: Evento, attributes: ['evento', 'fecha', 'hora']},
+                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido']},
+            ],
+            attributes: ['categoria'],
+        });
+    }
+    // Creacion de registro /messages
+    async store(conductor: Conductor): Promise<Conductor> {
+        return await this.conductorRepository.create<Conductor>(conductor);
+    }
+
+    // Registro Especifico /messages/{id}
+    async show(id): Promise<Conductor> {
+        return await this.conductorRepository.findOne<Conductor>({
+            include: [
+                { model: Persona, include: [{model: Departamento, attributes: ['departamento', 'sigla']}], attributes: [
+                    'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email', 'valido'], where: {
+                        valido: 'AC',
+                    }},
+                { model: Evento, attributes: ['evento', 'fecha', 'hora']},
+                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido']},
+            ],
+            attributes: ['categoria'],
+            where: {
+                conductorId: id,
+            },
+        });
+    }
+
+    // Modificar
+
+    async update(id, nuevo: Conductor): Promise<[number, Conductor[]]> {
+        return await this.conductorRepository.update<Conductor>({
+            categoria: nuevo.categoria,
+        }, {
+            where: {
+                conductorId: id,
+            },
+        });
+    }
+
+    // Eliminar
+
+    async destroy(id): Promise<[number, Conductor[]]> {
+        return await this.conductorRepository.update<Conductor>({
+            valido: 'AN',
+        }, {
+            where: {
+                conductorId: id,
+            },
+        });
+    }
+}
