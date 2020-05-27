@@ -3,15 +3,12 @@ import { Departamento } from './../../models/departamento.entity';
 import { Rol } from './../../models/rol.entity';
 import { Persona } from './../../models/persona.entity';
 import { Usuario } from './../../models/usuario.entity';
-
 import * as bycript from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
-
 @Injectable()
 export class UsuarioService {
     constructor(
-        @Inject('USUARIO_REPOSITORY') private readonly usuarioRepository: typeof Usuario,
-        private readonly jwtService: JwtService) { }
+        @Inject('USUARIO_REPOSITORY') private readonly usuarioRepository: typeof Usuario) { }
 
     // Lista todos /messages
     async indexAll(): Promise<Usuario[]> {
@@ -132,7 +129,7 @@ export class UsuarioService {
                     ],
                 },
             ],
-            attributes: ['nombre', 'contraseña', 'valido'],
+            attributes: ['usuarioId', 'nombre', 'contraseña', 'valido'],
             where: {
                 nombre: username,
                 valido: 'AC',
@@ -219,7 +216,7 @@ export class UsuarioService {
     }
 
     // ************************************************Metodos para autenticacion
-    async validateUser(username: string, pass: string): Promise<any> {
+    /*async validateUser(username: string, pass: string): Promise<any> {
         const user = await this.usuarioRepository.findOne<Usuario>({
             include: [
                 {
@@ -268,17 +265,16 @@ export class UsuarioService {
             return result;
         }
         return null;
-    }
+    }*/
 
-    async login(user: any) {
+    /*async login(user: any) {
         const payload = { username: user.nombre, sub: user.usuarioId };
         return {
             access_token: this.jwtService.sign(payload),
         };
-    }
+    }*/
 
-    private async passwordsAreEqual(hashedPassword: string, plainPassword: string): Promise<boolean> {
+    /*private async passwordsAreEqual(hashedPassword: string, plainPassword: string): Promise<boolean> {
         return await (hashedPassword === plainPassword) ? true : false;
-    }
-    // **************************************************************************************
+    }*/
 }

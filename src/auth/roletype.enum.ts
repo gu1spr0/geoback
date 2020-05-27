@@ -1,0 +1,6 @@
+export enum RoleType {
+    ADMIN = 'ADMINISTRADOR',
+    SUPERVISOR = 'SUPERVISOR',
+    OPERADOR = 'OPERADOR',
+    DISPOSITIVO = 'DISPOSITIVO',
+}

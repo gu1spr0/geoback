@@ -2,7 +2,6 @@ import { Table, Column, Model, DataType, BelongsTo, ForeignKey, HasMany, HasOne,
 import { Login } from './login.entity';
 import { Persona } from './persona.entity';
 import { Rol } from './rol.entity';
-import * as crypto from 'crypto';
 
 @Table({
     tableName: 'usuario',
@@ -17,24 +16,24 @@ export class Usuario extends Model<Usuario> {
     })
     public usuarioId: number;
 
-    @ForeignKey( () => Persona )
+    @ForeignKey(() => Persona)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
     })
     public personaId: number;
 
-    @BelongsTo( () => Persona )
+    @BelongsTo(() => Persona)
     persona: Persona;
 
-    @ForeignKey( () => Rol )
+    @ForeignKey(() => Rol)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
     })
     public rolId: number;
 
-    @BelongsTo( () => Rol )
+    @BelongsTo(() => Rol)
     rol: Rol;
 
     @Column({
@@ -55,7 +54,7 @@ export class Usuario extends Model<Usuario> {
     })
     public valido: string;
 
-    @HasMany( () => Login )
+    @HasMany(() => Login)
     logins: Login[];
 
     @CreatedAt

@@ -64,4 +64,16 @@ export class RolService {
             },
         });
     }
+
+    // Buscar Rol por Id
+
+    async findById(id): Promise<Rol> {
+        return await this.rolRepository.findOne<Rol>({
+            attributes: ['rolId', 'nombre', 'descripcion', 'observacion', 'valido'],
+            where: {
+                rolId: id,
+                valido: 'AC',
+            },
+        });
+    }
 }

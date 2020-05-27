@@ -70,10 +70,4 @@ export class UsuarioController {
             response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error al agregar registro' });
         });
     }
-
-    @UseGuards(AuthGuard('local'))
-    @Post('login')
-    async login(@Request() req) {
-        return this.usuarioService.login(req.user);
-    }
 }

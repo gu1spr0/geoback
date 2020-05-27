@@ -1,7 +1,4 @@
-import { JwtStrategy } from './auth/jwt.strategy';
-import { LocalStrategy } from './auth/local.strategy';
-import { JwtModule } from '@nestjs/jwt';
-import { PassportModule } from '@nestjs/passport';
+import { AppController } from './app.controller';
 import { DatabaseModule } from './database/database.module';
 import { LoginModule } from './modules/login.module';
 import { EventoModule } from './modules/evento.module';
@@ -23,7 +20,9 @@ import { UsuarioModule } from './modules/usuario.module';
 import { PersonaModule } from './modules/persona.module';
 import { AyudanteModule } from './modules/ayudante.module';
 import { Module } from '@nestjs/common';
-
+import { AuthModule } from './auth/auth.module';
+import { PassportModule } from '@nestjs/passport';
+import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth/constants';
 @Module({
   imports: [AyudanteModule,
@@ -46,8 +45,9 @@ import { jwtConstants } from './auth/constants';
     VisitanteVehiculoModule,
     VisitanteModule,
     DatabaseModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
