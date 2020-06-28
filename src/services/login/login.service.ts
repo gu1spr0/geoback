@@ -19,6 +19,7 @@ export class LoginService {
                         {
                             model: Persona,
                             attributes: [
+                                'personaId',
                                 'cedula',
                                 'nombre',
                                 'paterno',
@@ -33,6 +34,7 @@ export class LoginService {
                                 {
                                     model: Departamento,
                                     attributes: [
+                                        'departamentoId',
                                         'departamento',
                                         'sigla',
                                     ],
@@ -42,6 +44,7 @@ export class LoginService {
                         {
                             model: Rol,
                             attributes: [
+                                'rolId',
                                 'nombre',
                                 'descripcion',
                                 'observacion',
@@ -50,11 +53,12 @@ export class LoginService {
                         },
                     ],
                     attributes: [
+                        'usuarioId',
                         'valido',
                     ],
                 },
             ],
-            attributes: ['fecha', 'hora'],
+            attributes: ['loginId', 'fecha', 'hora'],
         });
     }
     // Creacion de registro /messages
@@ -72,6 +76,7 @@ export class LoginService {
                         {
                             model: Persona,
                             attributes: [
+                                'personaId',
                                 'cedula',
                                 'nombre',
                                 'paterno',
@@ -86,6 +91,7 @@ export class LoginService {
                                 {
                                     model: Departamento,
                                     attributes: [
+                                        'departamentoId',
                                         'departamento',
                                         'sigla',
                                     ],
@@ -95,6 +101,7 @@ export class LoginService {
                         {
                             model: Rol,
                             attributes: [
+                                'rolId',
                                 'nombre',
                                 'descripcion',
                                 'observacion',
@@ -103,11 +110,12 @@ export class LoginService {
                         },
                     ],
                     attributes: [
+                        'usuarioId',
                         'valido',
                     ],
                 },
             ],
-            attributes: ['fecha', 'hora'],
+            attributes: ['loginId', 'fecha', 'hora'],
             where: {
                 loginId: id,
             },

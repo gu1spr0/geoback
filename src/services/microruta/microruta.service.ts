@@ -14,6 +14,7 @@ export class MicrorutaService {
                 {
                     model: Macroruta,
                     attributes: [
+                        'macrorutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -24,6 +25,7 @@ export class MicrorutaService {
                         {
                             model: Horario,
                             attributes: [
+                                'horarioId',
                                 'dia',
                                 'hora',
                                 'valido',
@@ -34,6 +36,7 @@ export class MicrorutaService {
                 },
             ],
             attributes: [
+                'microrutaId',
                 'codigo',
                 'ruta',
                 'area',
@@ -49,6 +52,7 @@ export class MicrorutaService {
                 {
                     model: Macroruta,
                     attributes: [
+                        'macrorutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -59,6 +63,7 @@ export class MicrorutaService {
                         {
                             model: Horario,
                             attributes: [
+                                'horarioId',
                                 'dia',
                                 'hora',
                                 'valido',
@@ -69,6 +74,7 @@ export class MicrorutaService {
                 },
             ],
             attributes: [
+                'microrutaId',
                 'codigo',
                 'ruta',
                 'area',
@@ -94,6 +100,7 @@ export class MicrorutaService {
                 {
                     model: Macroruta,
                     attributes: [
+                        'macrorutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -104,6 +111,7 @@ export class MicrorutaService {
                         {
                             model: Horario,
                             attributes: [
+                                'horarioId',
                                 'dia',
                                 'hora',
                                 'valido',
@@ -114,6 +122,7 @@ export class MicrorutaService {
                 },
             ],
             attributes: [
+                'microrutaId',
                 'codigo',
                 'ruta',
                 'area',

@@ -25,10 +25,10 @@ export const DatabaseProviders = [
         useFactory: async () => {
             const sequelize = new Sequelize({
                 dialect: 'postgres',
-                host: '127.0.0.1',
+                host: '68.183.101.117',
                 port: 5432,
                 username: 'postgres',
-                password: 'admin',
+                password: 'Kuillerlearsi10+',
                 database: 'geo',
             });
             sequelize.addModels([Ayudante,

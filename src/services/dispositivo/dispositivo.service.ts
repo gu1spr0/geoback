@@ -11,19 +11,19 @@ export class DispositivoService {
     async indexAll(): Promise<Dispositivo[]> {
         return await this.dispositivoRepository.findAll<Dispositivo>({
             include: [
-                { model: Ubicacion, attributes: ['fecha', 'hora', 'linea'] },
-                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
+                { model: Ubicacion, attributes: ['ubicacionId', 'fecha', 'hora', 'linea'] },
+                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
             ],
-            attributes: ['nombre', 'descripcion', 'marca', 'modelo', 'sub', 'pub', 'ip', 'mac', 'valido'],
+            attributes: ['dispositivoId', 'nombre', 'descripcion', 'marca', 'modelo', 'sub', 'pub', 'ip', 'mac', 'valido'],
         });
     }
     async index(): Promise<Dispositivo[]> {
         return await this.dispositivoRepository.findAll<Dispositivo>({
             include: [
-                { model: Ubicacion, attributes: ['fecha', 'hora', 'linea'] },
-                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
+                { model: Ubicacion, attributes: ['ubicacionId', 'fecha', 'hora', 'linea'] },
+                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
             ],
-            attributes: ['nombre', 'descripcion', 'marca', 'modelo', 'sub', 'pub', 'ip', 'mac', 'valido'],
+            attributes: ['dispositivoId', 'nombre', 'descripcion', 'marca', 'modelo', 'sub', 'pub', 'ip', 'mac', 'valido'],
             where: {
                 valido: 'AC',
             },
@@ -39,10 +39,10 @@ export class DispositivoService {
     async show(id): Promise<Dispositivo> {
         return await this.dispositivoRepository.findOne<Dispositivo>({
             include: [
-                { model: Ubicacion, attributes: ['fecha', 'hora', 'linea'] },
-                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
+                { model: Ubicacion, attributes: ['ubicacionId', 'fecha', 'hora', 'linea'] },
+                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
             ],
-            attributes: ['nombre', 'descripcion', 'marca', 'modelo', 'sub', 'pub', 'ip', 'mac', 'valido'],
+            attributes: ['dispositivoId', 'nombre', 'descripcion', 'marca', 'modelo', 'sub', 'pub', 'ip', 'mac', 'valido'],
             where: {
                 valido: 'AC',
                 dispositivoId: id,

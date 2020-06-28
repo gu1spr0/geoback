@@ -13,6 +13,7 @@ export class UbicacionService {
                 {
                     model: Dispositivo,
                     attributes: [
+                        'dispositivoId',
                         'nombre',
                         'descripcion',
                         'marca',
@@ -27,6 +28,7 @@ export class UbicacionService {
                 },
             ],
             attributes: [
+                'ubicacionId',
                 'fecha',
                 'hora',
                 'linea',
@@ -39,6 +41,7 @@ export class UbicacionService {
                 {
                     model: Dispositivo,
                     attributes: [
+                        'dispositivoId',
                         'nombre',
                         'descripcion',
                         'marca',
@@ -56,6 +59,7 @@ export class UbicacionService {
                 },
             ],
             attributes: [
+                'ubicacionId',
                 'fecha',
                 'hora',
                 'linea',
@@ -75,6 +79,7 @@ export class UbicacionService {
                 {
                     model: Dispositivo,
                     attributes: [
+                        'dispositivoId',
                         'nombre',
                         'descripcion',
                         'marca',
@@ -92,6 +97,7 @@ export class UbicacionService {
                 },
             ],
             attributes: [
+                'ubicacionId',
                 'fecha',
                 'hora',
                 'linea',

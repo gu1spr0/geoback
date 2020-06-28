@@ -15,6 +15,7 @@ export class HorarioService {
                     model: Microruta, include: [{
                         model: Macroruta,
                         attributes: [
+                            'macrorutaId',
                             'codigo',
                             'ruta',
                             'area',
@@ -22,6 +23,7 @@ export class HorarioService {
                             'valido',
                         ],
                     }], attributes: [
+                        'microrutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -31,7 +33,7 @@ export class HorarioService {
                     ],
                 },
             ],
-            attributes: ['dia', 'hora', 'valido'],
+            attributes: ['horarioId', 'dia', 'hora', 'valido'],
         });
     }
     async index(): Promise<Horario[]> {
@@ -41,6 +43,7 @@ export class HorarioService {
                     model: Microruta, include: [{
                         model: Macroruta,
                         attributes: [
+                            'macrorutaId',
                             'codigo',
                             'ruta',
                             'area',
@@ -48,6 +51,7 @@ export class HorarioService {
                             'valido',
                         ],
                     }], attributes: [
+                        'microrutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -57,7 +61,7 @@ export class HorarioService {
                     ],
                 },
             ],
-            attributes: ['dia', 'hora', 'valido'],
+            attributes: ['horarioId', 'dia', 'hora', 'valido'],
             where: {
                 valido: 'AC',
             },
@@ -77,6 +81,7 @@ export class HorarioService {
                     model: Microruta, include: [{
                         model: Macroruta,
                         attributes: [
+                            'macrorutaId',
                             'codigo',
                             'ruta',
                             'area',
@@ -84,6 +89,7 @@ export class HorarioService {
                             'valido',
                         ],
                     }], attributes: [
+                        'microrutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -93,7 +99,7 @@ export class HorarioService {
                     ],
                 },
             ],
-            attributes: ['dia', 'hora', 'valido'],
+            attributes: ['horarioId', 'dia', 'hora', 'valido'],
             where: {
                 horarioId: id,
                 valido: 'AC',

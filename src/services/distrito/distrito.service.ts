@@ -3,17 +3,17 @@ import { Injectable, Inject } from '@nestjs/common';
 
 @Injectable()
 export class DistritoService {
-    constructor(@Inject('DISTRITO_REPOSITORY') private readonly distritoRepository: typeof Distrito) {}
+    constructor(@Inject('DISTRITO_REPOSITORY') private readonly distritoRepository: typeof Distrito) { }
 
     // Lista todos /messages
     async indexAll(): Promise<Distrito[]> {
         return await this.distritoRepository.findAll<Distrito>({
-            attributes: ['numero', 'descripcion', 'valido'],
+            attributes: ['distritoId', 'numero', 'descripcion', 'valido'],
         });
     }
     async index(): Promise<Distrito[]> {
         return await this.distritoRepository.findAll<Distrito>({
-            attributes: ['numero', 'descripcion', 'valido'],
+            attributes: ['distritoId', 'numero', 'descripcion', 'valido'],
             where: {
                 valido: 'AC',
             },
@@ -27,7 +27,7 @@ export class DistritoService {
     // Registro Especifico /messages/{id}
     async show(id): Promise<Distrito> {
         return await this.distritoRepository.findOne<Distrito>({
-            attributes: ['numero', 'descripcion', 'valido'],
+            attributes: ['distritoId', 'numero', 'descripcion', 'valido'],
             where: {
                 distritoId: id,
                 valido: 'AC',

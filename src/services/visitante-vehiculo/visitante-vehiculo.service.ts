@@ -10,28 +10,9 @@ export class VisitanteVehiculoService {
     // Lista todos /messages
     async indexAll(): Promise<VisitanteVehiculo[]> {
         return await this.visitanteVehiculoRepository.findAll<VisitanteVehiculo>({
-            include: [
-                {
-                    model: Visitante,
-                    attributes: [
-                        'ubicacion',
-                        'fecha',
-                        'hora',
-                    ],
-                },
-                {
-                    model: Vehiculo,
-                    attributes: [
-                        'placa',
-                        'capacidad',
-                        'unidad',
-                        'marca',
-                        'modelo',
-                        'valido',
-                    ],
-                },
+            attributes: [
+                'visitanteVehiculoId',
             ],
-            attributes: ['visitanteVehiculoId'],
         });
     }
     // async index(): Promise<Ayudante[]> {
@@ -61,6 +42,7 @@ export class VisitanteVehiculoService {
                 {
                     model: Visitante,
                     attributes: [
+                        'visitanteId',
                         'ubicacion',
                         'fecha',
                         'hora',
@@ -69,6 +51,7 @@ export class VisitanteVehiculoService {
                 {
                     model: Vehiculo,
                     attributes: [
+                        'vehiculoId',
                         'placa',
                         'capacidad',
                         'unidad',

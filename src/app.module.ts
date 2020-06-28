@@ -24,6 +24,7 @@ import { AuthModule } from './auth/auth.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth/constants';
+import { AppGateway } from './app.gateway';
 @Module({
   imports: [AyudanteModule,
     ConductorModule,
@@ -48,6 +49,6 @@ import { jwtConstants } from './auth/constants';
     AuthModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [AppGateway],
 })
 export class AppModule { }

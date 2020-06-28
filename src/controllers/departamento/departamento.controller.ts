@@ -9,8 +9,7 @@ export class DepartamentoController {
     constructor(private readonly departamentoService: DepartamentoService) { }
 
     @Get()
-    @Roles('OPERADOR')
-    @UseGuards(AuthGuard(), RoleGuard)
+
     public async indexAll(@Res() response) {
         return await this.departamentoService.indexAll().then(resultado => {
             response.status(HttpStatus.OK).json(resultado);
@@ -29,6 +28,8 @@ export class DepartamentoController {
         });
     }
 
+    @Roles('OPERADOR')
+    @UseGuards(AuthGuard(), RoleGuard)
     @Get(':id')
     public async show(@Res() response, @Param('id') id) {
         return await this.departamentoService.show(id).then(resultado => {

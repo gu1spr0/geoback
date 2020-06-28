@@ -13,81 +13,91 @@ export class EventoService {
     async indexAll(): Promise<Evento[]> {
         return await this.eventoRepository.findAll<Evento>({
             include: [
-                { model: Conductor, attributes: ['categoria'], include: [
-                    {
-                        model: Persona,
-                        attributes: [
-                            'cedula',
-                            'nombre',
-                            'paterno',
-                            'materno',
-                            'celular',
-                            'email',
-                            'direccion',
-                            'valido',
-                        ],
-                        include: [{
-                            model: Departamento,
+                {
+                    model: Conductor, attributes: ['conductorId', 'categoria'], include: [
+                        {
+                            model: Persona,
                             attributes: [
-                                'departamento',
-                                'sigla',
+                                'personaId',
+                                'cedula',
+                                'nombre',
+                                'paterno',
+                                'materno',
+                                'celular',
+                                'email',
+                                'direccion',
+                                'valido',
                             ],
-                        }],
-                    },
-                    {
-                        model: Vehiculo,
-                        attributes: [
-                            'placa',
-                            'capacidad',
-                            'unidad',
-                            'marca',
-                            'modelo',
-                            'valido',
-                        ],
-                    },
-                ]},
+                            include: [{
+                                model: Departamento,
+                                attributes: [
+                                    'departamentoId',
+                                    'departamento',
+                                    'sigla',
+                                ],
+                            }],
+                        },
+                        {
+                            model: Vehiculo,
+                            attributes: [
+                                'vehiculoId',
+                                'placa',
+                                'capacidad',
+                                'unidad',
+                                'marca',
+                                'modelo',
+                                'valido',
+                            ],
+                        },
+                    ]
+                },
             ],
-            attributes: ['evento', 'fecha', 'hora', 'valido'],
+            attributes: ['eventoId', 'evento', 'fecha', 'hora', 'valido'],
         });
     }
     async index(): Promise<Evento[]> {
         return await this.eventoRepository.findAll<Evento>({
             include: [
-                { model: Conductor, attributes: ['categoria'], include: [
-                    {
-                        model: Persona,
-                        attributes: [
-                            'cedula',
-                            'nombre',
-                            'paterno',
-                            'materno',
-                            'celular',
-                            'email',
-                            'direccion',
-                            'valido',
-                        ],
-                        include: [{
-                            model: Departamento,
+                {
+                    model: Conductor, attributes: ['conductorId', 'categoria'], include: [
+                        {
+                            model: Persona,
                             attributes: [
-                                'departamento',
-                                'sigla',
+                                'personaId',
+                                'cedula',
+                                'nombre',
+                                'paterno',
+                                'materno',
+                                'celular',
+                                'email',
+                                'direccion',
+                                'valido',
                             ],
-                        }],
-                    },
-                    {
-                        model: Vehiculo,
-                        attributes: [
-                            'placa',
-                            'capacidad',
-                            'unidad',
-                            'marca',
-                            'modelo',
-                            'valido',
-                        ],
-                    },
-                ]},
+                            include: [{
+                                model: Departamento,
+                                attributes: [
+                                    'departamentoId',
+                                    'departamento',
+                                    'sigla',
+                                ],
+                            }],
+                        },
+                        {
+                            model: Vehiculo,
+                            attributes: [
+                                'vehiculoId',
+                                'placa',
+                                'capacidad',
+                                'unidad',
+                                'marca',
+                                'modelo',
+                                'valido',
+                            ],
+                        },
+                    ]
+                },
             ],
-            attributes: ['evento', 'fecha', 'hora', 'valido'],
+            attributes: ['eventoId', 'evento', 'fecha', 'hora', 'valido'],
             where: {
                 valido: 'AC',
             },
@@ -103,41 +113,46 @@ export class EventoService {
     async show(id): Promise<Evento> {
         return await this.eventoRepository.findOne<Evento>({
             include: [
-                { model: Conductor, attributes: ['categoria'], include: [
-                    {
-                        model: Persona,
-                        attributes: [
-                            'cedula',
-                            'nombre',
-                            'paterno',
-                            'materno',
-                            'celular',
-                            'email',
-                            'direccion',
-                            'valido',
-                        ],
-                        include: [{
-                            model: Departamento,
+                {
+                    model: Conductor, attributes: ['conductorId', 'categoria'], include: [
+                        {
+                            model: Persona,
                             attributes: [
-                                'departamento',
-                                'sigla',
+                                'personaId',
+                                'cedula',
+                                'nombre',
+                                'paterno',
+                                'materno',
+                                'celular',
+                                'email',
+                                'direccion',
+                                'valido',
                             ],
-                        }],
-                    },
-                    {
-                        model: Vehiculo,
-                        attributes: [
-                            'placa',
-                            'capacidad',
-                            'unidad',
-                            'marca',
-                            'modelo',
-                            'valido',
-                        ],
-                    },
-                ]},
+                            include: [{
+                                model: Departamento,
+                                attributes: [
+                                    'departamentoId',
+                                    'departamento',
+                                    'sigla',
+                                ],
+                            }],
+                        },
+                        {
+                            model: Vehiculo,
+                            attributes: [
+                                'vehiculoId',
+                                'placa',
+                                'capacidad',
+                                'unidad',
+                                'marca',
+                                'modelo',
+                                'valido',
+                            ],
+                        },
+                    ]
+                },
             ],
-            attributes: ['evento', 'fecha', 'hora', 'valido'],
+            attributes: ['eventoId', 'evento', 'fecha', 'hora', 'valido'],
             where: {
                 eventoId: id,
                 valido: 'AC',

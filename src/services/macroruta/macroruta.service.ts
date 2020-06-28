@@ -14,6 +14,7 @@ export class MacrorutaService {
                 {
                     model: Microruta,
                     attributes: [
+                        'microrutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -25,6 +26,7 @@ export class MacrorutaService {
                 {
                     model: Vehiculo,
                     attributes: [
+                        'vehiculoId',
                         'placa',
                         'capacidad',
                         'unidad',
@@ -35,7 +37,7 @@ export class MacrorutaService {
 
                 },
             ],
-            attributes: ['codigo', 'ruta', 'area', 'descripcion', 'valido'],
+            attributes: ['macrorutaId', 'codigo', 'ruta', 'area', 'descripcion', 'valido'],
         });
     }
     async index(): Promise<Macroruta[]> {
@@ -44,6 +46,7 @@ export class MacrorutaService {
                 {
                     model: Microruta,
                     attributes: [
+                        'microrutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -55,6 +58,7 @@ export class MacrorutaService {
                 {
                     model: Vehiculo,
                     attributes: [
+                        'vehiculoId',
                         'placa',
                         'capacidad',
                         'unidad',
@@ -65,7 +69,7 @@ export class MacrorutaService {
 
                 },
             ],
-            attributes: ['codigo', 'ruta', 'area', 'descripcion', 'valido'],
+            attributes: ['macrorutaId', 'codigo', 'ruta', 'area', 'descripcion', 'valido'],
             where: {
                 valido: 'AC',
             },
@@ -84,6 +88,7 @@ export class MacrorutaService {
                 {
                     model: Microruta,
                     attributes: [
+                        'microrutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -95,6 +100,7 @@ export class MacrorutaService {
                 {
                     model: Vehiculo,
                     attributes: [
+                        'vehiculoId',
                         'placa',
                         'capacidad',
                         'unidad',
@@ -105,7 +111,7 @@ export class MacrorutaService {
 
                 },
             ],
-            attributes: ['codigo', 'ruta', 'area', 'descripcion', 'valido'],
+            attributes: ['macrorutaId', 'codigo', 'ruta', 'area', 'descripcion', 'valido'],
             where: {
                 macrorutaId: id,
                 valido: 'AC',

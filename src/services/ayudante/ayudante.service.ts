@@ -13,12 +13,12 @@ export class AyudanteService {
             include: [
                 {
                     model: Persona, include: [{
-                        model: Departamento, attributes: ['departamento', 'sigla'],
-                    }], attributes: ['cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email']
+                        model: Departamento, attributes: ['departamentoId', 'departamento', 'sigla'],
+                    }], attributes: ['personaId', 'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email']
                 },
-                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo'] },
+                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo'] },
             ],
-            attributes: ['descripcion', 'valido'],
+            attributes: ['ayudanteId', 'descripcion', 'valido'],
         });
     }
     async index(): Promise<Ayudante[]> {
@@ -26,12 +26,12 @@ export class AyudanteService {
             include: [
                 {
                     model: Persona, include: [{
-                        model: Departamento, attributes: ['departamento', 'sigla'],
-                    }], attributes: ['cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email']
+                        model: Departamento, attributes: ['departamentoId', 'departamento', 'sigla'],
+                    }], attributes: ['personaId', 'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email']
                 },
-                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo'] },
+                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo'] },
             ],
-            attributes: ['descripcion', 'valido'],
+            attributes: ['ayudanteId', 'descripcion', 'valido'],
             where: {
                 valido: 'AC',
             },
@@ -49,12 +49,12 @@ export class AyudanteService {
             include: [
                 {
                     model: Persona, include: [{
-                        model: Departamento, attributes: ['departamento', 'sigla'],
-                    }], attributes: ['cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email']
+                        model: Departamento, attributes: ['departamentoId', 'departamento', 'sigla'],
+                    }], attributes: ['personaId', 'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email']
                 },
-                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo'] },
+                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo'] },
             ],
-            attributes: ['descripcion', 'valido'],
+            attributes: ['ayudanteId', 'descripcion', 'valido'],
             where: {
                 ayudanteId: id,
                 valido: 'AC',

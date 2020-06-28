@@ -19,6 +19,7 @@ export class VehiculoService {
                 {
                     model: Dispositivo,
                     attributes: [
+                        'dispositivoId',
                         'nombre',
                         'descripcion',
                         'marca',
@@ -33,6 +34,7 @@ export class VehiculoService {
                 {
                     model: Macroruta,
                     attributes: [
+                        'macrorutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -44,38 +46,55 @@ export class VehiculoService {
                 {
                     model: Conductor,
                     attributes: [
+                        'conductorId',
                         'categoria',
                     ],
                     include: [
                         {
                             model: Persona,
+                            attributes: [
+                                'personaId',
+                                'nombre',
+                                'paterno',
+                                'materno',
+                                'cedula',
+                            ],
                             include: [
                                 {
                                     model: Departamento,
                                     attributes: [
+                                        'departamentoId',
                                         'departamento',
                                         'sigla',
                                     ],
-                                },
-                            ],
+                                }
 
+                            ],
                         },
                     ],
-
                 },
                 {
                     model: Ayudante,
                     attributes: [
+                        'ayudanteId',
                         'descripcion',
                         'valido',
                     ],
                     include: [
                         {
                             model: Persona,
+                            attributes: [
+                                'personaId',
+                                'nombre',
+                                'paterno',
+                                'materno',
+                                'cedula',
+                            ],
                             include: [
                                 {
                                     model: Departamento,
                                     attributes: [
+                                        'departamentoId',
                                         'departamento',
                                         'sigla',
                                     ],
@@ -87,6 +106,7 @@ export class VehiculoService {
                 {
                     model: Deshecho,
                     attributes: [
+                        'deshechoId',
                         'descripcion',
                         'cantidad',
                         'fecha',
@@ -96,6 +116,7 @@ export class VehiculoService {
                 },
             ],
             attributes: [
+                'vehiculoId',
                 'placa',
                 'capacidad',
                 'unidad',
@@ -111,6 +132,7 @@ export class VehiculoService {
                 {
                     model: Dispositivo,
                     attributes: [
+                        'dispositivoId',
                         'nombre',
                         'descripcion',
                         'marca',
@@ -125,6 +147,7 @@ export class VehiculoService {
                 {
                     model: Macroruta,
                     attributes: [
+                        'macrorutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -136,15 +159,24 @@ export class VehiculoService {
                 {
                     model: Conductor,
                     attributes: [
+                        'conductorId',
                         'categoria',
                     ],
                     include: [
                         {
                             model: Persona,
+                            attributes: [
+                                'personaId',
+                                'nombre',
+                                'paterno',
+                                'materno',
+                                'cedula',
+                            ],
                             include: [
                                 {
                                     model: Departamento,
                                     attributes: [
+                                        'departamentoId',
                                         'departamento',
                                         'sigla',
                                     ],
@@ -158,16 +190,25 @@ export class VehiculoService {
                 {
                     model: Ayudante,
                     attributes: [
+                        'ayudanteId',
                         'descripcion',
                         'valido',
                     ],
                     include: [
                         {
                             model: Persona,
+                            attributes: [
+                                'personaId',
+                                'nombre',
+                                'paterno',
+                                'materno',
+                                'cedula',
+                            ],
                             include: [
                                 {
                                     model: Departamento,
                                     attributes: [
+                                        'departamentoId',
                                         'departamento',
                                         'sigla',
                                     ],
@@ -179,6 +220,7 @@ export class VehiculoService {
                 {
                     model: Deshecho,
                     attributes: [
+                        'deshechoId',
                         'descripcion',
                         'cantidad',
                         'fecha',
@@ -188,6 +230,7 @@ export class VehiculoService {
                 },
             ],
             attributes: [
+                'vehiculoId',
                 'placa',
                 'capacidad',
                 'unidad',
@@ -213,6 +256,7 @@ export class VehiculoService {
                 {
                     model: Dispositivo,
                     attributes: [
+                        'dispositivoId',
                         'nombre',
                         'descripcion',
                         'marca',
@@ -227,6 +271,7 @@ export class VehiculoService {
                 {
                     model: Macroruta,
                     attributes: [
+                        'macrorutaId',
                         'codigo',
                         'ruta',
                         'area',
@@ -238,15 +283,24 @@ export class VehiculoService {
                 {
                     model: Conductor,
                     attributes: [
+                        'conductorId',
                         'categoria',
                     ],
                     include: [
                         {
                             model: Persona,
+                            attributes: [
+                                'personaId',
+                                'nombre',
+                                'paterno',
+                                'materno',
+                                'cedula',
+                            ],
                             include: [
                                 {
                                     model: Departamento,
                                     attributes: [
+                                        'departamentoId',
                                         'departamento',
                                         'sigla',
                                     ],
@@ -260,16 +314,25 @@ export class VehiculoService {
                 {
                     model: Ayudante,
                     attributes: [
+                        'ayudanteId',
                         'descripcion',
                         'valido',
                     ],
                     include: [
                         {
                             model: Persona,
+                            attributes: [
+                                'personaId',
+                                'nombre',
+                                'paterno',
+                                'materno',
+                                'cedula',
+                            ],
                             include: [
                                 {
                                     model: Departamento,
                                     attributes: [
+                                        'departamentoId',
                                         'departamento',
                                         'sigla',
                                     ],
@@ -281,6 +344,7 @@ export class VehiculoService {
                 {
                     model: Deshecho,
                     attributes: [
+                        'deshechoId',
                         'descripcion',
                         'cantidad',
                         'fecha',
@@ -290,6 +354,7 @@ export class VehiculoService {
                 },
             ],
             attributes: [
+                'vehiculoId',
                 'placa',
                 'capacidad',
                 'unidad',

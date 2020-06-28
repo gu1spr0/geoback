@@ -8,7 +8,7 @@ export class VisitanteService {
     // Lista todos /messages
     async indexAll(): Promise<Visitante[]> {
         return await this.visitanteRepository.findAll<Visitante>({
-            attributes: ['ubicacion', 'fecha', 'hora'],
+            attributes: ['visitanteId', 'ubicacion', 'fecha', 'hora'],
         });
     }
     // async index(): Promise<Ayudante[]> {
@@ -34,7 +34,7 @@ export class VisitanteService {
     // Registro Especifico /messages/{id}
     async show(id): Promise<Visitante> {
         return await this.visitanteRepository.findOne<Visitante>({
-            attributes: ['ubicacion', 'fecha', 'hora'],
+            attributes: ['visitanteId', 'ubicacion', 'fecha', 'hora'],
             where: {
                 visitanteId: id,
             },

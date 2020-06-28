@@ -2,7 +2,6 @@ import { Table, Column, Model, DataType, BelongsTo, ForeignKey, HasMany, HasOne,
 import { Login } from './login.entity';
 import { Persona } from './persona.entity';
 import { Rol } from './rol.entity';
-
 @Table({
     tableName: 'usuario',
 })

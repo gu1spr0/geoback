@@ -5,6 +5,7 @@ import { UsuarioService } from '../services/usuario/usuario.service';
 import { compare } from 'bcryptjs';
 import { IJwtPayload } from './jwt-payload.interface';
 import { SigninDto } from './dto/signin.dto';
+import { UsuarioDto } from './dto/usuario.dto';
 
 @Injectable()
 export class AuthService {
@@ -13,9 +14,11 @@ export class AuthService {
         private readonly jwtService: JwtService,
     ) { }
 
-    async signin(signinDto: SigninDto): Promise<{ token: string }> {
-        const { nombre, contraseña } = signinDto;
+    // async signin(signinDto: SigninDto): Promise<{ token: string }> {
+    //     const { nombre, contraseña } = signinDto;
 
+    async signin(usuario: Usuario): Promise<{ token: string }> {
+        const { nombre, contraseña } = usuario;
         const user = await this.usuarioService.findAuth(nombre);
         if (!user) {
             throw new NotFoundException('Usuario inexistente');

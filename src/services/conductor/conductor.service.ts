@@ -7,31 +7,35 @@ import { Injectable, Inject } from '@nestjs/common';
 
 @Injectable()
 export class ConductorService {
-    constructor(@Inject('CONDUCTOR_REPOSITORY') private readonly conductorRepository: typeof Conductor) {}
+    constructor(@Inject('CONDUCTOR_REPOSITORY') private readonly conductorRepository: typeof Conductor) { }
 
     // Lista todos /messages
     async indexAll(): Promise<Conductor[]> {
         return await this.conductorRepository.findAll<Conductor>({
             include: [
-                { model: Persona, include: [{model: Departamento, attributes: ['departamento', 'sigla']}], attributes: [
-                    'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email', 'valido']},
-                { model: Evento, attributes: ['evento', 'fecha', 'hora']},
-                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido']},
+                {
+                    model: Persona, include: [{ model: Departamento, attributes: ['departamentoId', 'departamento', 'sigla'] }], attributes: [
+                        'personaId', 'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email', 'valido']
+                },
+                { model: Evento, attributes: ['eventoId', 'evento', 'fecha', 'hora'] },
+                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
             ],
-            attributes: ['categoria'],
+            attributes: ['conductorId', 'categoria'],
         });
     }
     async index(): Promise<Conductor[]> {
         return await this.conductorRepository.findAll<Conductor>({
             include: [
-                { model: Persona, include: [{model: Departamento, attributes: ['departamento', 'sigla']}], attributes: [
-                    'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email', 'valido'], where: {
-                        valido: 'AC',
-                    }},
-                { model: Evento, attributes: ['evento', 'fecha', 'hora']},
-                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido']},
+                {
+                    model: Persona, include: [{ model: Departamento, attributes: ['departamentoId', 'departamento', 'sigla'] }], attributes: [
+                        'personaId', 'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email', 'valido'], where: {
+                            valido: 'AC',
+                        }
+                },
+                { model: Evento, attributes: ['eventoId', 'evento', 'fecha', 'hora'] },
+                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
             ],
-            attributes: ['categoria'],
+            attributes: ['conductorId', 'categoria'],
         });
     }
     // Creacion de registro /messages
@@ -43,14 +47,16 @@ export class ConductorService {
     async show(id): Promise<Conductor> {
         return await this.conductorRepository.findOne<Conductor>({
             include: [
-                { model: Persona, include: [{model: Departamento, attributes: ['departamento', 'sigla']}], attributes: [
-                    'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email', 'valido'], where: {
-                        valido: 'AC',
-                    }},
-                { model: Evento, attributes: ['evento', 'fecha', 'hora']},
-                { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido']},
+                {
+                    model: Persona, include: [{ model: Departamento, attributes: ['departamentoId', 'departamento', 'sigla'] }], attributes: [
+                        'personaId', 'cedula', 'nombre', 'paterno', 'materno', 'celular', 'direccion', 'email', 'valido'], where: {
+                            valido: 'AC',
+                        }
+                },
+                { model: Evento, attributes: ['eventoId', 'evento', 'fecha', 'hora'] },
+                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
             ],
-            attributes: ['categoria'],
+            attributes: ['conductorId', 'categoria'],
             where: {
                 conductorId: id,
             },

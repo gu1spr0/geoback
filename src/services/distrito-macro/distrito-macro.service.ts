@@ -6,14 +6,14 @@ import { Op } from 'sequelize/types';
 
 @Injectable()
 export class DistritoMacroService {
-    constructor(@Inject('DISTRITO_MACRO_REPOSITORY') private readonly distritoMacroRepository: typeof DistritoMacro) {}
+    constructor(@Inject('DISTRITO_MACRO_REPOSITORY') private readonly distritoMacroRepository: typeof DistritoMacro) { }
 
     // Lista todos /messages
     async indexAll(): Promise<DistritoMacro[]> {
         return await this.distritoMacroRepository.findAll<DistritoMacro>({
             include: [
-                { model: Macroruta, attributes: ['codigo', 'ruta', 'area', 'descripcion', 'valido']},
-                { model: Distrito, attributes: ['numero', 'descripcion', 'valido']},
+                { model: Macroruta, attributes: ['macrorutaId', 'codigo', 'ruta', 'area', 'descripcion', 'valido'] },
+                { model: Distrito, attributes: ['distritoId', 'numero', 'descripcion', 'valido'] },
             ],
             attributes: ['distritoMacroId'],
         });
@@ -21,8 +21,8 @@ export class DistritoMacroService {
     async index(): Promise<DistritoMacro[]> {
         return await this.distritoMacroRepository.findAll<DistritoMacro>({
             include: [
-                { model: Macroruta, attributes: ['codigo', 'ruta', 'area', 'descripcion', 'valido'], where: { valido: 'AC' }},
-                { model: Distrito, attributes: ['numero', 'descripcion', 'valido'], where: { valido: 'AC' }},
+                { model: Macroruta, attributes: ['macrorutaId', 'codigo', 'ruta', 'area', 'descripcion', 'valido'], where: { valido: 'AC' } },
+                { model: Distrito, attributes: ['distritoId', 'numero', 'descripcion', 'valido'], where: { valido: 'AC' } },
             ],
             attributes: ['distritoMacroId'],
         });
@@ -36,8 +36,8 @@ export class DistritoMacroService {
     async show(id): Promise<DistritoMacro> {
         return await this.distritoMacroRepository.findOne<DistritoMacro>({
             include: [
-                { model: Macroruta, attributes: ['codigo', 'ruta', 'area', 'descripcion', 'valido'], where: { valido: 'AC' }},
-                { model: Distrito, attributes: ['numero', 'descripcion', 'valido'], where: { valido: 'AC' }},
+                { model: Macroruta, attributes: ['macrorutaId', 'codigo', 'ruta', 'area', 'descripcion', 'valido'], where: { valido: 'AC' } },
+                { model: Distrito, attributes: ['distritoId', 'numero', 'descripcion', 'valido'], where: { valido: 'AC' } },
             ],
             attributes: ['distritoMacroId'],
             where: {

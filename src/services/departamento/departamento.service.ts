@@ -8,12 +8,12 @@ export class DepartamentoService {
     // Lista todos /messages
     async indexAll(): Promise<Departamento[]> {
         return await this.departamentoRepository.findAll<Departamento>({
-            attributes: ['departamento', 'sigla', 'valido'],
+            attributes: ['departamentoId', 'departamento', 'sigla', 'valido'],
         });
     }
     async index(): Promise<Departamento[]> {
         return await this.departamentoRepository.findAll<Departamento>({
-            attributes: ['departamento', 'sigla', 'valido'],
+            attributes: ['departamentoId', 'departamento', 'sigla', 'valido'],
             where: {
                 valido: 'AC',
             },
@@ -28,7 +28,7 @@ export class DepartamentoService {
     // Registro Especifico /messages/{id}
     async show(id): Promise<Departamento> {
         return await this.departamentoRepository.findOne<Departamento>({
-            attributes: ['departamento', 'sigla', 'valido'],
+            attributes: ['departamentoId', 'departamento', 'sigla', 'valido'],
             where: {
                 valido: 'AC',
                 departamentoId: id,

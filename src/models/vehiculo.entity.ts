@@ -59,7 +59,7 @@ export class Vehiculo extends Model<Vehiculo> {
     public placa: string;
 
     @Column({
-        type: DataType.FLOAT(5, 1),
+        type: DataType.DECIMAL(5, 1),
         allowNull: false,
     })
     public capacidad: number;

@@ -2,7 +2,7 @@ import { Table, Model, Column, DataType, CreatedAt, UpdatedAt, DeletedAt, Foreig
 import { Vehiculo } from './vehiculo.entity';
 
 @Table({
-    tableName: 'Deshecho',
+    tableName: 'deshecho',
 })
 export class Deshecho extends Model<Deshecho> {
     @Column({
@@ -14,11 +14,11 @@ export class Deshecho extends Model<Deshecho> {
     })
     public deshechoId: number;
 
-    @ForeignKey( () => Vehiculo )
+    @ForeignKey(() => Vehiculo)
     @Column
-    public vehiculoId: number;
+    vehiculoId: number;
 
-    @BelongsTo( () => Vehiculo)
+    @BelongsTo(() => Vehiculo)
     vehiculo: Vehiculo;
 
     @Column({
@@ -28,7 +28,7 @@ export class Deshecho extends Model<Deshecho> {
     public descripcion: string;
 
     @Column({
-        type: DataType.INTEGER,
+        type: DataType.DECIMAL(10, 2),
         allowNull: false,
     })
     public cantidad: number;

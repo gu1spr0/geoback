@@ -8,12 +8,12 @@ export class RolService {
     // Lista todos /messages
     async indexAll(): Promise<Rol[]> {
         return await this.rolRepository.findAll<Rol>({
-            attributes: ['nombre', 'descripcion', 'observacion', 'valido'],
+            attributes: ['rolId', 'nombre', 'descripcion', 'observacion', 'valido'],
         });
     }
     async index(): Promise<Rol[]> {
         return await this.rolRepository.findAll<Rol>({
-            attributes: ['nombre', 'descripcion', 'observacion', 'valido'],
+            attributes: ['rolId', 'nombre', 'descripcion', 'observacion', 'valido'],
             where: {
                 valido: 'AC',
             },
@@ -28,7 +28,7 @@ export class RolService {
     // Registro Especifico /messages/{id}
     async show(id): Promise<Rol> {
         return await this.rolRepository.findOne<Rol>({
-            attributes: ['nombre', 'descripcion', 'observacion', 'valido'],
+            attributes: ['rolId', 'nombre', 'descripcion', 'observacion', 'valido'],
             where: {
                 rolId: id,
                 valido: 'AC',

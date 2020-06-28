@@ -4,7 +4,7 @@ import { Injectable, Inject } from '@nestjs/common';
 
 @Injectable()
 export class DeshechoService {
-    constructor(@Inject('DESHECHO_REPOSITORY') private readonly deshechoRepository: typeof Deshecho) {}
+    constructor(@Inject('DESHECHO_REPOSITORY') private readonly deshechoRepository: typeof Deshecho) { }
 
     // Lista todos /messages
     async indexAll(): Promise<Deshecho[]> {
@@ -12,7 +12,7 @@ export class DeshechoService {
             // include: [
             //     { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido']},
             // ],
-            attributes: ['descripcion', 'cantidad', 'fecha', 'hora'],
+            attributes: ['deshechoId', 'descripcion', 'cantidad', 'fecha', 'hora'],
         });
     }
     async index(): Promise<Deshecho[]> {
@@ -20,7 +20,7 @@ export class DeshechoService {
             // include: [
             //     { model: Vehiculo, attributes: ['placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido']},
             // ],
-            attributes: ['descripcion', 'cantidad', 'fecha', 'hora'],
+            attributes: ['deshechoId', 'descripcion', 'cantidad', 'fecha', 'hora'],
             where: {
                 valido: 'AC',
             },

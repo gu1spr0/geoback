@@ -1,6 +1,6 @@
 import { Usuario } from './../../models/usuario.entity';
 import { UsuarioService } from './../../services/usuario/usuario.service';
-import { Controller, Post, Body, Request, HttpStatus, Get, Res, Param, Put, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, Request, HttpStatus, Get, Res, Param, Put, Delete, UseGuards, Inject } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('usuario')
@@ -49,7 +49,7 @@ export class UsuarioController {
         return this.usuarioService.store(usuario).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);
         }).catch(() => {
-            response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error al agregar registro' });
+            response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error al agregar registro de usuario' });
         });
     }
 
@@ -58,16 +58,16 @@ export class UsuarioController {
         return this.usuarioService.update(id, usuario).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);
         }).catch(() => {
-            response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error al agregar registro' });
+            response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error al modificar registro' });
         });
     }
 
     @Delete(':id')
     delete(@Res() response, @Param('id') id) {
         return this.usuarioService.destroy(id).then(respuesta => {
-            response.status(HttpStatus.CREATED).json(respuesta);
+            response.status(HttpStatus.OK).json(respuesta);
         }).catch(() => {
-            response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error al agregar registro' });
+            response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error al eliminar registro' });
         });
     }
 }
