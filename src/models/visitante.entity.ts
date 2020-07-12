@@ -15,7 +15,7 @@ export class Visitante extends Model<Visitante> {
     public visitanteId: number;
 
     @Column({
-        type: DataType.GEOMETRY('POINT', 4326),
+        type: DataType.GEOMETRY('POINT', 3857),
         allowNull: false,
     })
     public ubicacion: any;
@@ -32,7 +32,7 @@ export class Visitante extends Model<Visitante> {
     })
     public hora: Date;
 
-    @HasMany( () =>  VisitanteVehiculo )
+    @HasMany(() => VisitanteVehiculo)
     public visitantesVehiculos: VisitanteVehiculo[];
 
     @CreatedAt

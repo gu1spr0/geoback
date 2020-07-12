@@ -15,17 +15,17 @@ export class Microruta extends Model<Microruta> {
     })
     public microrutaId: number;
 
-    @HasOne( () => Horario )
+    @HasOne(() => Horario)
     public horario: Horario;
 
-    @ForeignKey( () => Macroruta )
+    @ForeignKey(() => Macroruta)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
     })
     public macrorutaId: number;
 
-    @BelongsTo( () => Macroruta )
+    @BelongsTo(() => Macroruta)
     macroruta: Macroruta;
 
     @Column({
@@ -35,13 +35,13 @@ export class Microruta extends Model<Microruta> {
     public codigo: string;
 
     @Column({
-        type: DataType.GEOMETRY('LINE', 4326),
+        type: DataType.GEOMETRY('LINE', 3857),
         allowNull: false,
     })
     public ruta: any;
 
     @Column({
-        type: DataType.GEOMETRY('POLYGON', 4326),
+        type: DataType.GEOMETRY('POLYGON', 3857),
         allowNull: false,
     })
     public area: any;

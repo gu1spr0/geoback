@@ -18,6 +18,7 @@ import { Usuario } from './../models/usuario.entity';
 import { Vehiculo } from './../models/vehiculo.entity';
 import { VisitanteVehiculo } from './../models/visitante_vehiculo.entity';
 import { Visitante } from './../models/visitante.entity';
+import { Puntos } from './../models/puntos.entity';
 
 export const DatabaseProviders = [
     {
@@ -25,10 +26,10 @@ export const DatabaseProviders = [
         useFactory: async () => {
             const sequelize = new Sequelize({
                 dialect: 'postgres',
-                host: '68.183.101.117',
+                host: 'localhost',
                 port: 5432,
                 username: 'postgres',
-                password: 'Kuillerlearsi10+',
+                password: 'admin',
                 database: 'geo',
             });
             sequelize.addModels([Ayudante,
@@ -49,7 +50,8 @@ export const DatabaseProviders = [
                 Usuario,
                 Vehiculo,
                 VisitanteVehiculo,
-                Visitante]);
+                Visitante,
+                Puntos]);
             // await sequelize.sync();
             return sequelize;
         },

@@ -23,13 +23,13 @@ export class Macroruta extends Model<Macroruta> {
     public codigo: string;
 
     @Column({
-        type: DataType.GEOMETRY('LINE', 4326),
+        type: DataType.GEOMETRY('LINE', 3857),
         allowNull: false,
     })
     public ruta: any;
 
     @Column({
-        type: DataType.GEOMETRY('POLYGON', 4326),
+        type: DataType.GEOMETRY('POLYGON', 3857),
         allowNull: false,
     })
     public area: any;
@@ -46,13 +46,13 @@ export class Macroruta extends Model<Macroruta> {
     })
     public valido: string;
 
-    @HasMany( () => Microruta)
+    @HasMany(() => Microruta)
     public microrutas: Microruta[];
 
-    @HasOne( () => Vehiculo )
+    @HasOne(() => Vehiculo)
     public vehiculo: Vehiculo;
 
-    @HasMany( () => DistritoMacro )
+    @HasMany(() => DistritoMacro)
     public distritosMacros: DistritoMacro[];
 
     @CreatedAt

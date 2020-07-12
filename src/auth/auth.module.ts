@@ -17,7 +17,7 @@ import { DatabaseProviders } from './../database/database.providers';
         PassportModule.register({
             defaultStrategy: 'jwt',
             property: 'user',
-            session: false,
+            session: true,
         }),
         JwtModule.register({
             secret: jwtConstants.secret,

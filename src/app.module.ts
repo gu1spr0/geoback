@@ -25,6 +25,8 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth/constants';
 import { AppGateway } from './app.gateway';
+import { PuntosModule } from './modules/puntos.module';
+import { PuntosService } from './services/puntos/puntos.service';
 @Module({
   imports: [AyudanteModule,
     ConductorModule,
@@ -47,6 +49,7 @@ import { AppGateway } from './app.gateway';
     VisitanteModule,
     DatabaseModule,
     AuthModule,
+    PuntosModule,
   ],
   controllers: [],
   providers: [AppGateway],

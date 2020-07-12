@@ -27,16 +27,16 @@ export class Ubicacion extends Model<Ubicacion> {
     public hora: Date;
 
     @Column({
-        type: DataType.GEOMETRY('LINE', 4326),
+        type: DataType.GEOMETRY('LINE', 3857),
         allowNull: false,
     })
     public linea: any;
 
-    @ForeignKey( () => Dispositivo)
+    @ForeignKey(() => Dispositivo)
     @Column
     dispositivoId: number;
 
-    @BelongsTo( () => Dispositivo)
+    @BelongsTo(() => Dispositivo)
     dispositivo: Dispositivo;
 
     @CreatedAt

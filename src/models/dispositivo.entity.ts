@@ -15,10 +15,10 @@ export class Dispositivo extends Model<Dispositivo> {
     })
     public dispositivoId: number;
 
-    @HasOne( () => Vehiculo )
+    @HasOne(() => Vehiculo)
     public vehiculo: Vehiculo;
 
-    @HasMany( () => Ubicacion )
+    @HasMany(() => Ubicacion)
     public ubicaciones: Ubicacion[];
 
     @Column({
@@ -63,11 +63,11 @@ export class Dispositivo extends Model<Dispositivo> {
     })
     public ip: string;
 
-    @Column({
-        type: DataType.STRING(30),
-        allowNull: false,
-    })
-    public mac: string;
+    // @Column({
+    //     type: DataType.STRING(30),
+    //     allowNull: false,
+    // })
+    // public mac: string;
 
     @Column({
         type: DataType.STRING(2),
