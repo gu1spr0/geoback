@@ -26,8 +26,8 @@ export const DatabaseProviders = [
                 dialect: 'postgres',
                 host: 'localhost',
                 port: 5432,
-                username: 'postgres',
-                password: 'admin',
+                username: 'backend',
+                password: 'Kuillerlearsi10+',
                 database: 'geo',
             });
             sequelize.addModels([Ayudante,
