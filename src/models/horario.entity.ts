@@ -1,5 +1,5 @@
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo, CreatedAt, UpdatedAt } from 'sequelize-typescript';
-import { Microruta } from './microruta.entity';
+import { Table, Column, Model, DataType, ForeignKey, BelongsTo, CreatedAt, UpdatedAt, HasOne } from 'sequelize-typescript';
+import { Ruta } from './ruta.entity';
 
 @Table({
     tableName: 'horario',
@@ -13,16 +13,6 @@ export class Horario extends Model<Horario> {
         primaryKey: true,
     })
     public horarioId: number;
-
-    @ForeignKey( () => Microruta )
-    @Column({
-        type: DataType.INTEGER,
-        allowNull: false,
-    })
-    public microrutaId: number;
-
-    @BelongsTo( () => Microruta )
-    public microruta: Microruta;
 
     @Column({
         type: DataType.INTEGER,
@@ -41,6 +31,9 @@ export class Horario extends Model<Horario> {
         allowNull: false,
     })
     public valido: string;
+
+    @HasOne(() => Ruta)
+    ruta: Ruta;
 
     @CreatedAt
     public creacion: Date;

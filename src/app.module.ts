@@ -7,11 +7,8 @@ import { VisitanteVehiculoModule } from './modules/visitante_vehiculo.module';
 import { VehiculoModule } from './modules/vehiculo.module';
 import { UbicacionModule } from './modules/ubicacion.module';
 import { RolModule } from './modules/rol.module';
-import { MicrorutaModule } from './modules/microruta.module';
-import { MacrorutaModule } from './modules/macroruta.module';
 import { HorarioModule } from './modules/horario.module';
 import { DistritoModule } from './modules/distrito.module';
-import { DistritoMacroModule } from './modules/distrito_macro.module';
 import { DispositivoModule } from './modules/dispositivo.module';
 import { DeshechoModule } from './modules/deshecho.module';
 import { DepartamentoModule } from './modules/departamento.module';
@@ -33,13 +30,10 @@ import { PuntosService } from './services/puntos/puntos.service';
     DepartamentoModule,
     DeshechoModule,
     DispositivoModule,
-    DistritoMacroModule,
     DistritoModule,
     EventoModule,
     HorarioModule,
     LoginModule,
-    MacrorutaModule,
-    MicrorutaModule,
     PersonaModule,
     RolModule,
     UbicacionModule,

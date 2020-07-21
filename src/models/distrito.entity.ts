@@ -1,5 +1,5 @@
 import { Table, Column, Model, DataType, HasMany, CreatedAt, UpdatedAt } from 'sequelize-typescript';
-import { DistritoMacro } from './distrito_macro.entity';
+import { Ruta } from './ruta.entity';
 
 @Table({
     tableName: 'distrito',
@@ -32,8 +32,8 @@ export class Distrito extends Model<Distrito> {
     })
     public valido: string;
 
-    @HasMany( () => DistritoMacro )
-    distritosMacros: DistritoMacro[];
+    @HasMany(() => Ruta)
+    rutas: Ruta[];
 
     @CreatedAt
     public creacion: Date;

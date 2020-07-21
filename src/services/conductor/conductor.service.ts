@@ -7,7 +7,9 @@ import { Injectable, Inject } from '@nestjs/common';
 
 @Injectable()
 export class ConductorService {
-    constructor(@Inject('CONDUCTOR_REPOSITORY') private readonly conductorRepository: typeof Conductor) { }
+    constructor(
+        @Inject('CONDUCTOR_REPOSITORY') private readonly conductorRepository: typeof Conductor,
+        @Inject('SEQUELIZE') private readonly sequelize) { }
 
     // Lista todos /messages
     async indexAll(): Promise<Conductor[]> {
@@ -40,6 +42,16 @@ export class ConductorService {
     }
     // Creacion de registro /messages
     async store(conductor: Conductor): Promise<Conductor> {
+        const t = await this.sequelize.transaction();
+        try {
+            conductor.personaId = conductor.persona.personaId;
+            const p = await this.conductorRepository.create<Conductor>(conductor, { transaction: t });
+            await t.commit();
+            return p;
+        } catch (error) {
+            await t.rollback();
+            throw new Error();
+        }
         return await this.conductorRepository.create<Conductor>(conductor);
     }
 

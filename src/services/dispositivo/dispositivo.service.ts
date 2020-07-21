@@ -2,6 +2,9 @@ import { Vehiculo } from './../../models/vehiculo.entity';
 import { Ubicacion } from './../../models/ubicacion.entity';
 import { Dispositivo } from './../../models/dispositivo.entity';
 import { Injectable, Inject } from '@nestjs/common';
+import { Conductor } from '../../models/conductor.entity';
+import { Persona } from '../../models/persona.entity';
+import { Departamento } from '../../models/departamento.entity';
 
 @Injectable()
 export class DispositivoService {
@@ -13,8 +16,46 @@ export class DispositivoService {
     async indexAll(): Promise<Dispositivo[]> {
         return await this.dispositivoRepository.findAll<Dispositivo>({
             include: [
-                { model: Ubicacion, attributes: ['ubicacionId', 'fecha', 'hora', 'linea'] },
-                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
+                {
+                    model: Ubicacion,
+                    attributes: ['ubicacionId', 'fecha', 'hora', 'linea'],
+                },
+                {
+                    model: Vehiculo,
+                    attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'],
+                    include: [
+                        {
+                            model: Conductor,
+                            attributes: [
+                                'conductorId',
+                                'categoria',
+                            ],
+                            include: [
+                                {
+                                    model: Persona,
+                                    attributes: [
+                                        'personaId',
+                                        'nombre',
+                                        'paterno',
+                                        'materno',
+                                        'cedula',
+                                    ],
+                                    include: [
+                                        {
+                                            model: Departamento,
+                                            attributes: [
+                                                'departamentoId',
+                                                'departamento',
+                                                'sigla',
+                                            ],
+                                        },
+                                    ],
+                                }
+                            ],
+                        },
+                    ],
+
+                },
             ],
             attributes: ['dispositivoId', 'nombre', 'descripcion', 'modelo', 'sub', 'pub', 'ip', 'valido'],
         });
@@ -22,8 +63,46 @@ export class DispositivoService {
     async index(): Promise<Dispositivo[]> {
         return await this.dispositivoRepository.findAll<Dispositivo>({
             include: [
-                { model: Ubicacion, attributes: ['ubicacionId', 'fecha', 'hora', 'linea'] },
-                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
+                {
+                    model: Ubicacion,
+                    attributes: ['ubicacionId', 'fecha', 'hora', 'linea'],
+                },
+                {
+                    model: Vehiculo,
+                    attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'],
+                    include: [
+                        {
+                            model: Conductor,
+                            attributes: [
+                                'conductorId',
+                                'categoria',
+                            ],
+                            include: [
+                                {
+                                    model: Persona,
+                                    attributes: [
+                                        'personaId',
+                                        'nombre',
+                                        'paterno',
+                                        'materno',
+                                        'cedula',
+                                    ],
+                                    include: [
+                                        {
+                                            model: Departamento,
+                                            attributes: [
+                                                'departamentoId',
+                                                'departamento',
+                                                'sigla',
+                                            ],
+                                        },
+                                    ],
+                                }
+                            ],
+                        },
+                    ],
+
+                },
             ],
             attributes: ['dispositivoId', 'nombre', 'descripcion', 'marca', 'modelo', 'sub', 'pub', 'ip', 'valido'],
             where: {
@@ -50,8 +129,46 @@ export class DispositivoService {
     async show(id): Promise<Dispositivo> {
         return await this.dispositivoRepository.findOne<Dispositivo>({
             include: [
-                { model: Ubicacion, attributes: ['ubicacionId', 'fecha', 'hora', 'linea'] },
-                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
+                {
+                    model: Ubicacion,
+                    attributes: ['ubicacionId', 'fecha', 'hora', 'linea'],
+                },
+                {
+                    model: Vehiculo,
+                    attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'],
+                    include: [
+                        {
+                            model: Conductor,
+                            attributes: [
+                                'conductorId',
+                                'categoria',
+                            ],
+                            include: [
+                                {
+                                    model: Persona,
+                                    attributes: [
+                                        'personaId',
+                                        'nombre',
+                                        'paterno',
+                                        'materno',
+                                        'cedula',
+                                    ],
+                                    include: [
+                                        {
+                                            model: Departamento,
+                                            attributes: [
+                                                'departamentoId',
+                                                'departamento',
+                                                'sigla',
+                                            ],
+                                        },
+                                    ],
+                                }
+                            ],
+                        },
+                    ],
+
+                },
             ],
             attributes: ['dispositivoId', 'nombre', 'descripcion', 'marca', 'modelo', 'sub', 'pub', 'ip', 'valido'],
             where: {
@@ -65,8 +182,46 @@ export class DispositivoService {
     async findName(id): Promise<Dispositivo> {
         return await this.dispositivoRepository.findOne<Dispositivo>({
             include: [
-                { model: Ubicacion, attributes: ['ubicacionId', 'fecha', 'hora', 'linea'] },
-                { model: Vehiculo, attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'] },
+                {
+                    model: Ubicacion,
+                    attributes: ['ubicacionId', 'fecha', 'hora', 'linea'],
+                },
+                {
+                    model: Vehiculo,
+                    attributes: ['vehiculoId', 'placa', 'capacidad', 'unidad', 'marca', 'modelo', 'valido'],
+                    include: [
+                        {
+                            model: Conductor,
+                            attributes: [
+                                'conductorId',
+                                'categoria',
+                            ],
+                            include: [
+                                {
+                                    model: Persona,
+                                    attributes: [
+                                        'personaId',
+                                        'nombre',
+                                        'paterno',
+                                        'materno',
+                                        'cedula',
+                                    ],
+                                    include: [
+                                        {
+                                            model: Departamento,
+                                            attributes: [
+                                                'departamentoId',
+                                                'departamento',
+                                                'sigla',
+                                            ],
+                                        },
+                                    ],
+                                }
+                            ],
+                        },
+                    ],
+
+                },
             ],
             attributes: ['dispositivoId', 'nombre', 'descripcion', 'marca', 'modelo', 'sub', 'pub', 'ip', 'valido'],
             where: {

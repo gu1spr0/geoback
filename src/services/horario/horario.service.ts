@@ -1,5 +1,3 @@
-import { Macroruta } from './../../models/macroruta.entity';
-import { Microruta } from './../../models/microruta.entity';
 import { Horario } from './../../models/horario.entity';
 import { Injectable, Inject } from '@nestjs/common';
 
@@ -10,57 +8,11 @@ export class HorarioService {
     // Lista todos /messages HORARIO, MICRORUTA, MACRORUTA
     async indexAll(): Promise<Horario[]> {
         return await this.horarioRepository.findAll<Horario>({
-            include: [
-                {
-                    model: Microruta, include: [{
-                        model: Macroruta,
-                        attributes: [
-                            'macrorutaId',
-                            'codigo',
-                            'ruta',
-                            'area',
-                            'descripcion',
-                            'valido',
-                        ],
-                    }], attributes: [
-                        'microrutaId',
-                        'codigo',
-                        'ruta',
-                        'area',
-                        'manzanas',
-                        'descripcion',
-                        'valido',
-                    ],
-                },
-            ],
             attributes: ['horarioId', 'dia', 'hora', 'valido'],
         });
     }
     async index(): Promise<Horario[]> {
         return await this.horarioRepository.findAll<Horario>({
-            include: [
-                {
-                    model: Microruta, include: [{
-                        model: Macroruta,
-                        attributes: [
-                            'macrorutaId',
-                            'codigo',
-                            'ruta',
-                            'area',
-                            'descripcion',
-                            'valido',
-                        ],
-                    }], attributes: [
-                        'microrutaId',
-                        'codigo',
-                        'ruta',
-                        'area',
-                        'manzanas',
-                        'descripcion',
-                        'valido',
-                    ],
-                },
-            ],
             attributes: ['horarioId', 'dia', 'hora', 'valido'],
             where: {
                 valido: 'AC',
@@ -76,29 +28,6 @@ export class HorarioService {
     // Registro Especifico /messages/{id}
     async show(id): Promise<Horario> {
         return await this.horarioRepository.findOne<Horario>({
-            include: [
-                {
-                    model: Microruta, include: [{
-                        model: Macroruta,
-                        attributes: [
-                            'macrorutaId',
-                            'codigo',
-                            'ruta',
-                            'area',
-                            'descripcion',
-                            'valido',
-                        ],
-                    }], attributes: [
-                        'microrutaId',
-                        'codigo',
-                        'ruta',
-                        'area',
-                        'manzanas',
-                        'descripcion',
-                        'valido',
-                    ],
-                },
-            ],
             attributes: ['horarioId', 'dia', 'hora', 'valido'],
             where: {
                 horarioId: id,

@@ -4,13 +4,10 @@ import { Conductor } from './../models/conductor.entity';
 import { Departamento } from './../models/departamento.entity';
 import { Deshecho } from './../models/deshecho.entity';
 import { Dispositivo } from './../models/dispositivo.entity';
-import { DistritoMacro } from './../models/distrito_macro.entity';
 import { Distrito } from './../models/distrito.entity';
 import { Evento } from './../models/evento.entity';
 import { Horario } from './../models/horario.entity';
 import { Login } from './../models/login.entity';
-import { Macroruta } from './../models/macroruta.entity';
-import { Microruta } from './../models/microruta.entity';
 import { Persona } from './../models/persona.entity';
 import { Rol } from './../models/rol.entity';
 import { Ubicacion } from './../models/ubicacion.entity';
@@ -19,6 +16,7 @@ import { Vehiculo } from './../models/vehiculo.entity';
 import { VisitanteVehiculo } from './../models/visitante_vehiculo.entity';
 import { Visitante } from './../models/visitante.entity';
 import { Puntos } from './../models/puntos.entity';
+import { Ruta } from '../models/ruta.entity';
 
 export const DatabaseProviders = [
     {
@@ -37,13 +35,10 @@ export const DatabaseProviders = [
                 Departamento,
                 Deshecho,
                 Dispositivo,
-                DistritoMacro,
                 Distrito,
                 Evento,
                 Horario,
                 Login,
-                Macroruta,
-                Microruta,
                 Persona,
                 Rol,
                 Ubicacion,
@@ -51,7 +46,8 @@ export const DatabaseProviders = [
                 Vehiculo,
                 VisitanteVehiculo,
                 Visitante,
-                Puntos]);
+                Puntos,
+                Ruta]);
             // await sequelize.sync();
             return sequelize;
         },

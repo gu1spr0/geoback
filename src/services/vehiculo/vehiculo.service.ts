@@ -3,7 +3,6 @@ import { Deshecho } from './../../models/deshecho.entity';
 import { Departamento } from './../../models/departamento.entity';
 import { Persona } from './../../models/persona.entity';
 import { Conductor } from './../../models/conductor.entity';
-import { Macroruta } from './../../models/macroruta.entity';
 import { Dispositivo } from './../../models/dispositivo.entity';
 import { Vehiculo } from './../../models/vehiculo.entity';
 import { Injectable, Inject } from '@nestjs/common';
@@ -27,21 +26,8 @@ export class VehiculoService {
                         'sub',
                         'pub',
                         'ip',
-                        'mac',
                         'valido',
                     ],
-                },
-                {
-                    model: Macroruta,
-                    attributes: [
-                        'macrorutaId',
-                        'codigo',
-                        'ruta',
-                        'area',
-                        'descripcion',
-                        'valido',
-                    ],
-
                 },
                 {
                     model: Conductor,
@@ -67,11 +53,12 @@ export class VehiculoService {
                                         'departamento',
                                         'sigla',
                                     ],
-                                }
-
+                                },
                             ],
+
                         },
                     ],
+
                 },
                 {
                     model: Ayudante,
@@ -140,21 +127,8 @@ export class VehiculoService {
                         'sub',
                         'pub',
                         'ip',
-                        'mac',
                         'valido',
                     ],
-                },
-                {
-                    model: Macroruta,
-                    attributes: [
-                        'macrorutaId',
-                        'codigo',
-                        'ruta',
-                        'area',
-                        'descripcion',
-                        'valido',
-                    ],
-
                 },
                 {
                     model: Conductor,
@@ -264,21 +238,8 @@ export class VehiculoService {
                         'sub',
                         'pub',
                         'ip',
-                        'mac',
                         'valido',
                     ],
-                },
-                {
-                    model: Macroruta,
-                    attributes: [
-                        'macrorutaId',
-                        'codigo',
-                        'ruta',
-                        'area',
-                        'descripcion',
-                        'valido',
-                    ],
-
                 },
                 {
                     model: Conductor,

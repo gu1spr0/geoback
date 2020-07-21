@@ -35,7 +35,7 @@ export class DispositivoController {
     }
     @Get('iden/:id')
     public async findName(@Res() response, @Param('id') id) {
-        return await this.dispositivoService.show(id).then(resultado => {
+        return await this.dispositivoService.findName(id).then(resultado => {
             response.status(HttpStatus.OK).json(resultado);
         }).catch(() => {
             response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error en la obtencion del dato' });

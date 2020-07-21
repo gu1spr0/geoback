@@ -1,10 +1,10 @@
 import { Table, Column, DataType, Model, HasMany, CreatedAt, UpdatedAt, DeletedAt, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { Ayudante } from './ayudante.entity';
 import { Dispositivo } from './dispositivo.entity';
-import { Macroruta } from './macroruta.entity';
 import { Conductor } from './conductor.entity';
 import { Deshecho } from './deshecho.entity';
 import { VisitanteVehiculo } from './visitante_vehiculo.entity';
+import { Ruta } from './ruta.entity';
 
 @Table({
     tableName: 'vehiculo',
@@ -28,16 +28,6 @@ export class Vehiculo extends Model<Vehiculo> {
 
     @BelongsTo(() => Dispositivo)
     dispositivo: Dispositivo;
-
-    @ForeignKey(() => Macroruta)
-    @Column({
-        type: DataType.INTEGER,
-        allowNull: false,
-    })
-    public macrorutaId: number;
-
-    @BelongsTo(() => Macroruta)
-    macroruta: Macroruta;
 
     @ForeignKey(() => Conductor)
     @Column({
@@ -93,6 +83,9 @@ export class Vehiculo extends Model<Vehiculo> {
 
     @HasMany(() => Deshecho)
     deshechos: Deshecho[];
+
+    @HasMany(() => Ruta)
+    rutas: Ruta[];
 
     @CreatedAt
     creacion: Date;
