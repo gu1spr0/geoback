@@ -153,6 +153,7 @@ export class UsuarioService {
 
     // Creacion de registro /messages
     async store(usuario: Usuario): Promise<any> {
+        console.log(usuario);
         const t = await this.sequelize.transaction();
         try {
             usuario.persona.departamentoId = usuario.persona.departamento.departamentoId;

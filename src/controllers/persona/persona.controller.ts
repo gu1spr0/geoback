@@ -1,8 +1,12 @@
 import { Persona } from './../../models/persona.entity';
 import { PersonaService } from './../../services/persona/persona.service';
 import { Controller, Post, Get, Body, Res, Req, HttpStatus, Put, Param, Delete, UseGuards } from '@nestjs/common';
-
+import { Roles } from './../../auth/decorators/rol.decorator';
+import { AuthGuard } from '@nestjs/passport';
+import { RoleGuard } from '../../auth/guards/role.guard';
 @Controller('persona')
+@Roles('ADMIN', 'SUPERVISOR')
+@UseGuards(AuthGuard('jwt'), RoleGuard)
 export class PersonaController {
     constructor(private readonly personaService: PersonaService) { }
 

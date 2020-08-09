@@ -1,8 +1,13 @@
 import { Vehiculo } from './../../models/vehiculo.entity';
 import { VehiculoService } from './../../services/vehiculo/vehiculo.service';
-import { Controller, Get, Res, Param, HttpStatus, Post, Body, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Res, Param, HttpStatus, Post, Body, Put, Delete, UseGuards } from '@nestjs/common';
+import { Roles } from '../../auth/decorators/rol.decorator';
+import { AuthGuard } from '@nestjs/passport';
+import { RoleGuard } from '../../auth/guards/role.guard';
 
 @Controller('vehiculo')
+@Roles('ADMIN', 'SUPERVISOR')
+@UseGuards(AuthGuard('jwt'), RoleGuard)
 export class VehiculoController {
     constructor(private readonly vehiculoService: VehiculoService) { }
 

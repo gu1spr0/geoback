@@ -1,16 +1,21 @@
 import { Visitante } from './../../models/visitante.entity';
 import { VisitanteService } from './../../services/visitante/visitante.service';
-import { Controller, Get, Res, Param, HttpStatus, Post, Body, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Res, Param, HttpStatus, Post, Body, Put, Delete, UseGuards } from '@nestjs/common';
+import { Roles } from '../../auth/decorators/rol.decorator';
+import { AuthGuard } from '@nestjs/passport';
+import { RoleGuard } from '../../auth/guards/role.guard';
 
 @Controller('visitante')
+@Roles('ADMIN', 'SUPERVISOR')
+@UseGuards(AuthGuard('jwt'), RoleGuard)
 export class VisitanteController {
-    constructor(private readonly visitanteService: VisitanteService) {}
+    constructor(private readonly visitanteService: VisitanteService) { }
 
     @Get()
     public async indexAll(@Res() response) {
-        return await this.visitanteService.indexAll().then( resultado => {
+        return await this.visitanteService.indexAll().then(resultado => {
             response.status(HttpStatus.OK).json(resultado);
-        }).catch( () => {
+        }).catch(() => {
             response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error en la obtencion de datos' });
         });
         // return await this.ayudanteService.indexAll();
@@ -27,28 +32,28 @@ export class VisitanteController {
 
     @Get(':id')
     public async show(@Res() response, @Param('id') id) {
-        return await this.visitanteService.show(id).then( resultado => {
+        return await this.visitanteService.show(id).then(resultado => {
             response.status(HttpStatus.OK).json(resultado);
-        }).catch( () => {
+        }).catch(() => {
             response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error en la obtencion del dato' });
         });
     }
 
     @Post()
     add(@Body() visitante: Visitante, @Res() response) {
-        return this.visitanteService.store(visitante).then( respuesta => {
+        return this.visitanteService.store(visitante).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);
-        }).catch( () => {
-            response.status(HttpStatus.FORBIDDEN).json({mensaje: 'Error al agregar registro'});
+        }).catch(() => {
+            response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error al agregar registro' });
         });
     }
 
     @Put(':id')
     update(@Body() visitante: Visitante, @Param('id') id, @Res() response) {
-        return this.visitanteService.update(id, visitante).then( respuesta => {
+        return this.visitanteService.update(id, visitante).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);
-        }).catch( () => {
-            response.status(HttpStatus.FORBIDDEN).json({mensaje: 'Error al agregar registro'});
+        }).catch(() => {
+            response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error al agregar registro' });
         });
     }
 

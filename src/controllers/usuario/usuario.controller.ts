@@ -2,8 +2,12 @@ import { Usuario } from './../../models/usuario.entity';
 import { UsuarioService } from './../../services/usuario/usuario.service';
 import { Controller, Post, Body, Request, HttpStatus, Get, Res, Param, Put, Delete, UseGuards, Inject } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { Roles } from '../../auth/decorators/rol.decorator';
+import { RoleGuard } from '../../auth/guards/role.guard';
 
 @Controller('usuario')
+@Roles('ADMIN', 'SUPERVISOR')
+@UseGuards(AuthGuard('jwt'), RoleGuard)
 export class UsuarioController {
     constructor(
         private readonly usuarioService: UsuarioService) { }

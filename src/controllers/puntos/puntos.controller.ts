@@ -1,6 +1,9 @@
 import { Puntos } from './../../models/puntos.entity';
-import { Controller, Res, HttpStatus, Get, Post, Delete, Param, Body, Put } from '@nestjs/common';
+import { Controller, Res, HttpStatus, Get, Post, Delete, Param, Body, Put, UseGuards } from '@nestjs/common';
 import { PuntosService } from '../../services/puntos/puntos.service';
+import { Roles } from '../../auth/decorators/rol.decorator';
+import { AuthGuard } from '@nestjs/passport';
+import { RoleGuard } from '../../auth/guards/role.guard';
 
 @Controller('puntos')
 export class PuntosController {
@@ -26,6 +29,8 @@ export class PuntosController {
     }
 
     @Post()
+    @Roles('ADMIN', 'SUPERVISOR')
+    @UseGuards(AuthGuard('jwt'), RoleGuard)
     add(@Body() punto: Puntos, @Res() response) {
         return this.puntosService.store(punto).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);
@@ -35,6 +40,8 @@ export class PuntosController {
     }
 
     @Put(':id')
+    @Roles('ADMIN', 'SUPERVISOR')
+    @UseGuards(AuthGuard('jwt'), RoleGuard)
     update(@Param('id') id, @Res() response) {
         return this.puntosService.update(id).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);

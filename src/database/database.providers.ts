@@ -24,10 +24,10 @@ export const DatabaseProviders = [
         useFactory: async () => {
             const sequelize = new Sequelize({
                 dialect: 'postgres',
-                host: '68.183.101.117',
+                host: 'localhost',
                 port: 5432,
                 username: 'backend',
-                password: 'Kuillerlearsi10+',
+                password: 'Back20#34',
                 database: 'geo',
             });
             sequelize.addModels([Ayudante,
@@ -48,7 +48,6 @@ export const DatabaseProviders = [
                 Visitante,
                 Puntos,
                 Ruta]);
-            // await sequelize.sync();
             return sequelize;
         },
     },

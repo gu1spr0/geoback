@@ -21,7 +21,7 @@ import { DatabaseProviders } from './../database/database.providers';
         }),
         JwtModule.register({
             secret: jwtConstants.secret,
-            signOptions: { expiresIn: '1h' },
+            signOptions: { expiresIn: '2h' },
         }),
     ],
     providers: [AuthService, JwtStrategy, UsuarioService, ...usuarioProvider, PersonaService, ...personaProvider, ...DatabaseProviders],

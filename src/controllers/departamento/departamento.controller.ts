@@ -9,7 +9,6 @@ export class DepartamentoController {
     constructor(private readonly departamentoService: DepartamentoService) { }
 
     @Get()
-
     public async indexAll(@Res() response) {
         return await this.departamentoService.indexAll().then(resultado => {
             response.status(HttpStatus.OK).json(resultado);
@@ -27,9 +26,6 @@ export class DepartamentoController {
             response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error en la obtencion de datos' });
         });
     }
-
-    @Roles('OPERADOR')
-    @UseGuards(AuthGuard(), RoleGuard)
     @Get(':id')
     public async show(@Res() response, @Param('id') id) {
         return await this.departamentoService.show(id).then(resultado => {
@@ -40,6 +36,8 @@ export class DepartamentoController {
     }
 
     @Post()
+    @Roles('ADMIN', 'SUPERVISOR')
+    @UseGuards(AuthGuard('jwt'), RoleGuard)
     add(@Body() departamento: Departamento, @Res() response) {
         return this.departamentoService.store(departamento).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);
@@ -49,6 +47,8 @@ export class DepartamentoController {
     }
 
     @Put(':id')
+    @Roles('ADMIN', 'SUPERVISOR')
+    @UseGuards(AuthGuard('jwt'), RoleGuard)
     update(@Body() departamento: Departamento, @Param('id') id, @Res() response) {
         return this.departamentoService.update(id, departamento).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);
@@ -58,6 +58,8 @@ export class DepartamentoController {
     }
 
     @Delete(':id')
+    @Roles('ADMIN', 'SUPERVISOR')
+    @UseGuards(AuthGuard('jwt'), RoleGuard)
     delete(@Res() response, @Param('id') id) {
         return this.departamentoService.destroy(id).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);

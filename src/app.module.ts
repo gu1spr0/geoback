@@ -24,6 +24,8 @@ import { jwtConstants } from './auth/constants';
 import { AppGateway } from './app.gateway';
 import { PuntosModule } from './modules/puntos.module';
 import { PuntosService } from './services/puntos/puntos.service';
+import { RoleGuard } from './auth/guards/role.guard';
+import { JwtStrategy } from './auth/jwt.strategy';
 @Module({
   imports: [AyudanteModule,
     ConductorModule,

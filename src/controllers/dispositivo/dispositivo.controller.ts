@@ -1,6 +1,9 @@
 import { Dispositivo } from './../../models/dispositivo.entity';
 import { DispositivoService } from './../../services/dispositivo/dispositivo.service';
-import { Controller, Get, Res, Param, HttpStatus, Post, Body, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Res, Param, HttpStatus, Post, Body, Put, Delete, UseGuards } from '@nestjs/common';
+import { Roles } from '../../auth/decorators/rol.decorator';
+import { AuthGuard } from '@nestjs/passport';
+import { RoleGuard } from '../../auth/guards/role.guard';
 
 @Controller('dispositivo')
 export class DispositivoController {
@@ -43,6 +46,8 @@ export class DispositivoController {
     }
 
     @Post()
+    @Roles('ADMIN', 'SUPERVISOR')
+    @UseGuards(AuthGuard('jwt'), RoleGuard)
     add(@Body() dispositivo: Dispositivo, @Res() response) {
         return this.dispositivoService.store(dispositivo).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);
@@ -52,6 +57,8 @@ export class DispositivoController {
     }
 
     @Put(':id')
+    @Roles('ADMIN', 'SUPERVISOR')
+    @UseGuards(AuthGuard('jwt'), RoleGuard)
     update(@Body() dispositivo: Dispositivo, @Param('id') id, @Res() response) {
         return this.dispositivoService.update(id, dispositivo).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);
@@ -61,6 +68,8 @@ export class DispositivoController {
     }
 
     @Delete(':id')
+    @Roles('ADMIN', 'SUPERVISOR')
+    @UseGuards(AuthGuard('jwt'), RoleGuard)
     delete(@Res() response, @Param('id') id) {
         return this.dispositivoService.destroy(id).then(respuesta => {
             response.status(HttpStatus.CREATED).json(respuesta);
